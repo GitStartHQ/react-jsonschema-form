@@ -55,6 +55,11 @@ const CheckboxesWidget = ({
     target: { value },
   }: React.FocusEvent<HTMLButtonElement>) => onFocus(id, value);
 
+  let labelPlacement: 'start' | 'end' | 'top' | 'bottom' = 'end';
+  if (options.labelPlacement === 'start') {
+    labelPlacement = 'start';
+  }
+
   return (
     <>
       <FormLabel required={required} htmlFor={id}>
@@ -81,6 +86,7 @@ const CheckboxesWidget = ({
               control={checkbox}
               key={index}
               label={option.label}
+              labelPlacement={labelPlacement}
             />
           );
         })}
