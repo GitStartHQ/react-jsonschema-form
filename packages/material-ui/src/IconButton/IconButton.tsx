@@ -17,17 +17,19 @@ const mappings: any = {
 
 type IconButtonProps = MuiIconButtonProps & {
   icon: string;
-  tooltip: string;
+  tooltip?: string;
 };
 
 const IconButton = (props: IconButtonProps) => {
   const { icon, className, tooltip, ...otherProps } = props;
   return (
-    <Tooltip title={tooltip}>
+    tooltip ? <Tooltip title={tooltip}>
       <MUIIconButton {...otherProps} size="small">
         {mappings[icon]}
       </MUIIconButton>
-    </Tooltip>
+    </Tooltip> : <MUIIconButton {...otherProps} size="small">
+      {mappings[icon]}
+    </MUIIconButton>
   );
 };
 
